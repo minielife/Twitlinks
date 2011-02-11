@@ -1,0 +1,3 @@
+Existing search engines such as Google pride themselves on a totally automated approach to indexing of data and ranking search results. However, it is undeniable that the accuracy of the earliest human-curated search indexes was far superior, but not scalable to practical requirements.
+
+We present Twitlinks, a method to automatically rank search results based on human classification via Twitter.
