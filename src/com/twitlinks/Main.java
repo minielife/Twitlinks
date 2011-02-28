@@ -1,9 +1,12 @@
-package com.twitlinks.parser;
+package com.twitlinks;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.twitlinks.parser.Document;
+import com.twitlinks.parser.Location;
 
 public class Main {
 
