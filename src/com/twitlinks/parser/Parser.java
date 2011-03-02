@@ -23,8 +23,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+
+import com.twitlinks.Document;
+import com.twitlinks.indexer.Buffer;
 
 /**
  * @author raunak
@@ -40,13 +41,6 @@ public class Parser extends Thread {
 
 	/** Maximum length a thread can go to sleep for. 15 Minutes */
 	private static final int MAXWAIT = 900000;
-
-	/**
-	 * Holds a list of <code>Document</code> objects in a queue. The crawler can
-	 * pull approximately 120 tweets/second.
-	 */
-	public static BlockingQueue<Document> documents = new ArrayBlockingQueue<Document>(
-			300);
 
 	/**
 	 * A specialized pattern to parse date with the format
@@ -88,7 +82,7 @@ public class Parser extends Thread {
 			try {
 				while ((line = bufferedReader.readLine()) != null) {
 					try {
-						success = documents.offer(createDocument(line));
+						success = Buffer.documentQueue.offer(createDocument(line));
 						if (!success) { // Blocking Queue is full. Increase the
 										// waiting time.
 							try {
